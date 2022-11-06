@@ -8,12 +8,10 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import tacos.domain.data.Ingredient;
 import tacos.domain.data.Taco;
 import tacos.domain.db.GetIngredientService;
 
-import java.util.Arrays;
-import java.util.List;
+import javax.validation.Valid;
 
 @Slf4j
 @Controller
@@ -29,7 +27,7 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processDesign(Taco design, Errors errors) {
+    public String processDesign(@Valid Taco design, Errors errors) {
         if (errors.hasErrors()) {
             return "design";
         }
